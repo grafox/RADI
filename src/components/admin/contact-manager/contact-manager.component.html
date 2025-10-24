@@ -1,0 +1,32 @@
+<div class="container mx-auto">
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-3xl font-bold text-white">Contact Form Submissions</h1>
+  </div>
+
+  <div class="space-y-4">
+    @for (submission of submissions(); track submission.id) {
+      <details class="bg-slate-900 shadow-md rounded-lg overflow-hidden">
+        <summary class="px-6 py-4 cursor-pointer flex justify-between items-center text-white font-semibold">
+          <span>From: {{ submission.name }} <span class="text-slate-400 font-normal">- {{ submission.date | date:'short' }}</span></span>
+          <span class="text-sky-400 text-sm">View Message</span>
+        </summary>
+        <div class="px-6 py-4 border-t border-slate-700">
+          <p><strong class="text-slate-400">Name:</strong> {{ submission.name }}</p>
+          <p><strong class="text-slate-400">Email:</strong> <a [href]="'mailto:' + submission.email" class="text-sky-400 hover:underline">{{ submission.email }}</a></p>
+          @if (submission.phone) {
+            <p><strong class="text-slate-400">Phone:</strong> {{ submission.phone }}</p>
+          }
+          <p class="mt-4 whitespace-pre-wrap text-slate-300">{{ submission.message }}</p>
+
+          <div class="text-right mt-4">
+            <button (click)="deleteSubmission(submission.id)" class="font-medium text-red-500 hover:underline">Delete</button>
+          </div>
+        </div>
+      </details>
+    } @empty {
+      <div class="bg-slate-900 rounded-lg p-6 text-center text-slate-400">
+        No contact messages yet.
+      </div>
+    }
+  </div>
+</div>

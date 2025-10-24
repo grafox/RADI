@@ -1,0 +1,44 @@
+<div class="container mx-auto max-w-4xl">
+  <h1 class="text-3xl font-bold mb-8 text-white">{{ isEditMode ? 'Edit' : 'Create' }} Blog Post</h1>
+
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()" class="space-y-6 bg-slate-900 p-8 rounded-lg">
+    <div>
+      <label for="title" class="block text-sm font-semibold leading-6 text-white">Title</label>
+      <input type="text" id="title" formControlName="title" class="mt-2 block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-sky-500 sm:text-sm sm:leading-6">
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div>
+        <label for="author" class="block text-sm font-semibold leading-6 text-white">Author</label>
+        <input type="text" id="author" formControlName="author" class="mt-2 block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-sky-500 sm:text-sm sm:leading-6">
+      </div>
+      <div>
+        <label for="publishDate" class="block text-sm font-semibold leading-6 text-white">Publish Date</label>
+        <input type="date" id="publishDate" formControlName="publishDate" class="mt-2 block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-sky-500 sm:text-sm sm:leading-6">
+      </div>
+    </div>
+    
+     <div>
+      <label for="imageUrl" class="block text-sm font-semibold leading-6 text-white">Image URL</label>
+      <input type="url" id="imageUrl" formControlName="imageUrl" placeholder="https://picsum.photos/seed/..." class="mt-2 block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-sky-500 sm:text-sm sm:leading-6">
+    </div>
+
+    <div>
+      <label for="excerpt" class="block text-sm font-semibold leading-6 text-white">Excerpt</label>
+      <textarea id="excerpt" formControlName="excerpt" rows="3" class="mt-2 block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-sky-500 sm:text-sm sm:leading-6"></textarea>
+    </div>
+
+    <div>
+      <label for="content" class="block text-sm font-semibold leading-6 text-white">Content (HTML)</label>
+      <textarea id="content" formControlName="content" rows="10" class="mt-2 block w-full rounded-md border-0 bg-white/5 px-3.5 py-2 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-sky-500 sm:text-sm sm:leading-6 font-mono"></textarea>
+      <p class="mt-2 text-xs text-slate-400">A full rich text editor can be integrated here. For now, please use HTML for formatting.</p>
+    </div>
+
+    <div class="flex items-center justify-end gap-x-6 border-t border-slate-700 pt-6 mt-6">
+      <a routerLink="/admin/blog" class="text-sm font-semibold leading-6 text-white">Cancel</a>
+      <button type="submit" [disabled]="postForm.invalid" class="rounded-md bg-sky-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 disabled:opacity-50 disabled:cursor-not-allowed">
+        {{ isEditMode ? 'Save Changes' : 'Publish Post' }}
+      </button>
+    </div>
+  </form>
+</div>

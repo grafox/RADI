@@ -1,0 +1,38 @@
+<div class="container mx-auto">
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-3xl font-bold text-white">Manage Services</h1>
+    <a routerLink="/admin/services/new" class="rounded-md bg-sky-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-sky-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 transition-colors">
+      Add New Service
+    </a>
+  </div>
+
+  <div class="bg-slate-900 shadow-md rounded-lg overflow-hidden">
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm text-left text-slate-300">
+        <thead class="text-xs text-white uppercase bg-slate-700">
+          <tr>
+            <th scope="col" class="px-6 py-3">Name</th>
+            <th scope="col" class="px-6 py-3">Description</th>
+            <th scope="col" class="px-6 py-3 text-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (service of services(); track service.id) {
+            <tr class="border-b border-slate-700 hover:bg-slate-800">
+              <th scope="row" class="px-6 py-4 font-medium text-white whitespace-nowrap">{{ service.name }}</th>
+              <td class="px-6 py-4">{{ service.description }}</td>
+              <td class="px-6 py-4 text-right space-x-2">
+                <a [routerLink]="['/admin/services/edit', service.id]" class="font-medium text-sky-400 hover:underline">Edit</a>
+                <button (click)="deleteService(service.id)" class="font-medium text-red-500 hover:underline">Delete</button>
+              </td>
+            </tr>
+          } @empty {
+             <tr class="border-b border-slate-700">
+                <td colspan="3" class="px-6 py-4 text-center text-slate-400">No services found.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

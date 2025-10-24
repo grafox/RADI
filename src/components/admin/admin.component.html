@@ -1,0 +1,24 @@
+<div class="flex h-screen bg-slate-800 text-white">
+  <!-- Sidebar -->
+  <aside class="w-64 flex-shrink-0 bg-slate-900 p-6 flex flex-col justify-between">
+    <div>
+      <h2 class="text-2xl font-bold text-sky-400 mb-8">RADI Admin</h2>
+      <nav class="space-y-2">
+        <a routerLink="/admin/dashboard" routerLinkActive="bg-slate-700 text-sky-400" class="flex items-center px-4 py-2 rounded-md hover:bg-slate-700 transition-colors">Dashboard</a>
+        <a routerLink="/admin/blog" routerLinkActive="bg-slate-700 text-sky-400" class="flex items-center px-4 py-2 rounded-md hover:bg-slate-700 transition-colors">Blog Posts</a>
+        <a routerLink="/admin/services" routerLinkActive="bg-slate-700 text-sky-400" class="flex items-center px-4 py-2 rounded-md hover:bg-slate-700 transition-colors">Services</a>
+        <a routerLink="/admin/about" routerLinkActive="bg-slate-700 text-sky-400" class="flex items-center px-4 py-2 rounded-md hover:bg-slate-700 transition-colors">About Page</a>
+        <a routerLink="/admin/contact" routerLinkActive="bg-slate-700 text-sky-400" class="flex items-center px-4 py-2 rounded-md hover:bg-slate-700 transition-colors">Contact Messages</a>
+      </nav>
+    </div>
+    <div>
+      <a routerLink="/" class="block text-center w-full px-4 py-2 rounded-md hover:bg-slate-700 transition-colors mb-2">View Site</a>
+      <button (click)="logout()" class="w-full text-center px-4 py-2 rounded-md bg-sky-600 hover:bg-sky-500 transition-colors">Logout</button>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 p-8 overflow-y-auto">
+    <router-outlet></router-outlet>
+  </main>
+</div>
